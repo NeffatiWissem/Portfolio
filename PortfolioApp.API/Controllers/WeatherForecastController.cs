@@ -43,7 +43,7 @@ namespace PortfolioApp.API.Controllers
         //     })
         //     .ToArray();
         // }
-
+[AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetOwner()
         {
