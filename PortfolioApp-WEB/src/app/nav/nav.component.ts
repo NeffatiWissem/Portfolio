@@ -18,7 +18,7 @@ export class NavComponent implements OnInit {
     //--> Appel méthode login de authSerive s'il y a de retour donc il exécuté next si non erreur
     this.authService.login(this.model).subscribe(
       next =>  {console.log('Connexion réussie')},
-      error => {console.log('Échec de la connexion')}      
+      error => {console.log(error)}      
     )
   }
 

@@ -47,11 +47,10 @@ namespace PortfolioApp.API.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> login(UserForLoginDto userForLoginDto)
         {
-            var userFromRepo = await _repo.Login(userForLoginDto.UserName.ToLower(), userForLoginDto.Password);
+           var userFromRepo = await _repo.Login(userForLoginDto.UserName.ToLower(), userForLoginDto.Password);
 
             //--> Vérifier si user est authorisé
             if (userForLoginDto == null) return Unauthorized();
-
 
             //--< ******* Créer Token pour user  ****** >---------
             //-->1- Créer claims qui sera ajouter dans TOKEN
