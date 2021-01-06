@@ -7,9 +7,25 @@
   color:white !important;
 }
 
-.btn-secondary:hover {
+.btn-outline-primary:hover {
     text-decoration: none;
     color: black !important;
     background: rgb(252, 210, 25) !important
       }
+
+.dropdown-toggle,.dropdown-item{
+  cursor: pointer;
+}
+
+.mnav-link:hover, .nav-link:focus{
+  text-decoration: none;
+  color:rgb(252, 210, 25) !important;
+}
+
+.mnav-link{
+  color: black !important;
+  letter-spacing: 0.5px;
+  font-size: 1.0rem;
+  font-family: 'LegendryDemoRegular';
+}
 

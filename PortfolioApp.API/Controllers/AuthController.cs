@@ -32,7 +32,7 @@ namespace PortfolioApp.API.Controllers
             userForRegisterDto.UserName = userForRegisterDto.UserName.ToLower();
             if (await _repo.UserExists(userForRegisterDto.UserName))
             {
-                return BadRequest("Cet utilisateur déjà exist déjà");
+                return BadRequest("Cet utilisateur exist déjà");
             }
 
             var userToCreate = new User

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertifyService } from '../_services/alertify.service';
 import { AuthService } from '../_services/auth.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { AuthService } from '../_services/auth.service';
 export class NavComponent implements OnInit {
   model : any = {};
 
-  constructor(private authService: AuthService) { }
+  constructor(public authService: AuthService, private alertify: AlertifyService ) { }
 
   ngOnInit() {
   }
@@ -17,25 +18,22 @@ export class NavComponent implements OnInit {
   login(){
     //--> Appel méthode login de authSerive s'il y a de retour donc il exécuté next si non erreur
     this.authService.login(this.model).subscribe(
-      next =>  {console.log('Connexion réussie')},
-      error => {console.log(error)}      
+      next =>  {this.alertify.success('Connexion réussie')},
+      error => {this.alertify.error(error)}      
     )
+  }
+  
+  //--> Méthode permet de faire la déconnexion
+  loggedOut(){
+    //--> Supprimer variable localStorage 'token'
+    localStorage.removeItem('token');
+    this.alertify.message('Déconnexion avec succès');
   }
 
   //--> Méthode qui permet d'aaficher from si user n'a pas de Token 
   // si non affiche message BienVenue
   loggedIn(){
-    //--> récuper le contenu de variable locaStorage sous le nom 'token'
-    const token = localStorage.getItem('token');
-
-    //--> si token contient des données retourne true sinon false
-    return !! token 
+   return this.authService.loggedIn();
   }
 
-  //--> Méthode permet de faire la déconnexion
-  loggedOut(){
-    //--> Supprimer variable localStorage 'token'
-    localStorage.removeItem('token');
-    console.log('Déconnexion avec succès');
-  }
 }

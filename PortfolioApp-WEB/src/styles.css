@@ -1,12 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~bootswatch/dist/solar/bootstrap.min.css";
 @import "~font-awesome/css/font-awesome.min.css";
+
+/* Inporter les style de alertify  */ 
+@import "~alertifyjs/build/css/alertify.min.css";
+@import "~alertifyjs/build/css/themes/bootstrap.min.css";
+
+/* Importer myStyle.css */
+@import url("assets/myStyles.css");
+
+
 
 /*Fonts*/
 
 @font-face {font-family: "LatiFontRegular"; src: url("./assets/fonts/LatiFontRegular.ttf")}
 @font-face {font-family: "LegendryDemoRegular"; src: url("./assets/fonts/LegendryDemoRegular.ttf")}
-@font-face {font-family: "RegularBrush"; src: url("./assets/fonts/RegularBrush.otf")}
-@font-face {font-family: "AdrenalinesDemoRegular"; src: url("./assets/fonts/AdrenalinesDemoRegular.ttf")}
+@font-face {font-family: "Leorio"; src: url("./assets/fonts/Leorio.ttf")}
+@font-face {font-family: "AmericanCaptain"; src: url("./assets/fonts/AmericanCaptain.otf")}
 
 
