@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
@@ -20,6 +21,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using PortfolioApp.API.Data;
 using PortfolioApp.API.Helpers;
+using Newtonsoft;
 
 namespace PortfolioApp.API
 {
@@ -36,27 +38,50 @@ namespace PortfolioApp.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<DataContext>(x=> x.UseSqlite(Configuration.GetConnectionString("DefaultConnectionSqlite")));
-
-            services.AddControllers();
+            
+            services.AddControllers().AddNewtonsoftJson(options =>
+                       options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "PortfolioApp.API", Version = "v1" });
+            c.SwaggerDoc("v1", new OpenApiInfo { Title = "PortfolioApp.API", Version = "v1" });
             });
 
             //--> Permet d'utliser le policie pour géréer l'accée à notre service web
             services.AddCors();
 
+            //--> Ajouter serverice AutoMapper
+            services.AddAutoMapper();
+
+            //--> Ajouter TrialData
+            services.AddTransient<TrialData>();
+
+
             //--> Ajouter "IAuthRepository" et "AuthRepository" dans fichier "strtup.cs"
             services.AddScoped<IAuthRepository,AuthRepository>();
 
+             //--> Ajouter "IPortfolioRepository" et "PortfolioRepository" dans fichier "strtup.cs"
+            services.AddScoped<IPortfolioRepository,PortfolioRepository>();
+
             //--> Ajouter Authentification 
+            // services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            // .AddJwtBearer(Options =>{
+            //     Options.TokenValidationParameters = new TokenValidationParameters{
+            //         ValidateIssuerSigningKey = true,
+            //         IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration.GetSection("AppSettings:Secret").Value)),
+            //         ValidateIssuer = false,
+            //         ValidateAudience = false
+            //     };
+            // });
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-            .AddJwtBearer(Options =>{
-                Options.TokenValidationParameters = new TokenValidationParameters{
+            .AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
                     ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(
-                        Encoding.ASCII.GetBytes(Configuration.GetSection("AppSettings:Secret").Value)),
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII
+                        .GetBytes(Configuration.GetSection("AppSettings:Secret").Value)),
                     ValidateIssuer = false,
                     ValidateAudience = false
                 };
@@ -64,7 +89,7 @@ namespace PortfolioApp.API
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, TrialData trialData )
         {
             if (env.IsDevelopment())
             {
@@ -88,6 +113,14 @@ namespace PortfolioApp.API
                   
               });
             }
+
+            // //--> Ajouter UserTrialData
+           // trialData.TrialUsers();
+            // //--> Ajouter ProjectTrialData
+           // trialData.TrialProjects();
+            // //--> Ajouter SkillTrialData
+          //  trialData.TrialSkills();
+
 
             //--> Permet d'avoir autorisation pour tous les site d'accédé a notre service web 
             app.UseCors(x=> x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());

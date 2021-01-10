@@ -10,8 +10,12 @@ namespace PortfolioApp.API.Data
             
         }
 
-         public DbSet<Owner> Owners { get; set; }
+        public DbSet<Owner> Owners { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Photo> Photos { get; set; }
+        public DbSet<Project> Projects { get; set; }
+        public DbSet<PhotoProjects> PhotosProjects { get; set; }
+        public DbSet<Skill> Skills { get; set; }
         
     }
 }

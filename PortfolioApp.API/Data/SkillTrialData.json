@@ -1,0 +1,22 @@
+[
+    {
+      "SkillName": "C#",
+      "percentage": "90"      
+    },
+    {
+        "SkillName": "ASP.NET",
+        "percentage": "90"      
+    },
+    {
+        "SkillName": "ASP.NET MVC",
+        "percentage": "90"      
+    },
+    {
+        "SkillName": "ASP.NET Core",
+        "percentage": "90"      
+    },
+    {
+        "SkillName": "Web API",
+        "percentage": "90"      
+    }
+]

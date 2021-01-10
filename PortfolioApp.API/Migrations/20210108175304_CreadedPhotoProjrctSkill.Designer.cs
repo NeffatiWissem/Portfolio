@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PortfolioApp.API.Data;
 
 namespace PortfolioApp.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20210108175304_CreadedPhotoProjrctSkill")]
+    partial class CreadedPhotoProjrctSkill
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -67,86 +69,6 @@ namespace PortfolioApp.API.Migrations
                     b.ToTable("Photos");
                 });
 
-            modelBuilder.Entity("PortfolioApp.API.Models.PhotoProjects", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("DateAdded")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("IsMain")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("ProjectId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Url")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProjectId");
-
-                    b.ToTable("PhotosProjects");
-                });
-
-            modelBuilder.Entity("PortfolioApp.API.Models.Project", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("City")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("CompanyName")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Country")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("DateOf")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("DateOn")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Environment")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Mission")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("ProjectName")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Projects");
-                });
-
-            modelBuilder.Entity("PortfolioApp.API.Models.Skill", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("SkillName")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("percentage")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Skills");
-                });
-
             modelBuilder.Entity("PortfolioApp.API.Models.User", b =>
                 {
                     b.Property<int>("Id")
@@ -200,22 +122,6 @@ namespace PortfolioApp.API.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("PortfolioApp.API.Models.PhotoProjects", b =>
-                {
-                    b.HasOne("PortfolioApp.API.Models.Project", "Project")
-                        .WithMany("Photos")
-                        .HasForeignKey("ProjectId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Project");
-                });
-
-            modelBuilder.Entity("PortfolioApp.API.Models.Project", b =>
-                {
-                    b.Navigation("Photos");
                 });
 
             modelBuilder.Entity("PortfolioApp.API.Models.User", b =>

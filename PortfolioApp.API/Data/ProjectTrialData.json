@@ -1,0 +1,22 @@
+[
+    {
+      "ProjectName": "Auto partage E-Colibri",
+      "CompanyName": "Mobility Tech Green",
+      "DateOn": "2020-08-10",
+      "DateOf": "2020-11-10",
+      "Mission": "Conception d’architectures applicatives n-tiers<br>Gestion de la cohérence fonctionnelle et technique<br>",
+      "Environment": "ASP.Net Core3.1, Web API, Linq, Bootstrap, JQuery, JavaScript, CSS3, TSQL, SQL Server 2019, Scrum, Git, Azure DevOps, Visual Studio Enterprise 2019.",
+      "City": "Rennes",
+      "Country": "FRANCE"
+    },
+    {
+        "ProjectName": "Auto formation",
+        "CompanyName": "AKKA Technologies",
+        "DateOn": "2020-03-16",
+        "DateOf": "2020-06-10",
+        "Mission": "Auto formation dans les outils .Net Core et MVC et les principe SOLID et Design Pattern pendant la confinement.",
+        "Environment": "ASP.Net Core3.1, Web API, Linq, Bootstrap, JQuery, JavaScript, CSS3, TSQL, SQL Server 2019, Scrum, Git, Azure DevOps, Visual Studio Enterprise 2019.",
+        "City": "Toulouse",
+        "Country": "FRANCE"
+    }
+]

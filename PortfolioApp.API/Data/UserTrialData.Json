@@ -1,0 +1,21 @@
+[
+    {
+      "Username": "Wissem Neffati",
+      "Gender": "Male",
+      "DateOfBirth": "1979-05-07",
+      "Password": "password",
+      "KnownAs": "wissem",
+      "Introduction": "Disposant d’un esprit d’initiatives exacerbées et un goût pour l’organisation et le travail en équipe. Rigoureux, doté d’un bon relationnel et bilingue, je maîtrise parfaitement C#, ASP.NET MVC, ASP.NET Core, Ajax, Linq, Web API, Bootstrap, JQuery, Javascript, CSS3, HTML5, TSQL, Sql Server, ma curiosité et ma passion du métier me poussant en permanence à me tenir informé de l’actualité technologique.",
+      "LookingFor": "Développeur .NET",
+      "Interests": "Sport, Ciméma, Musique",
+      "City": "SOUSSE",
+      "Country": "TUNISIE",
+      "Photos": [
+        {
+          "url": "https://i.ibb.co/xqZp369/Safwa.jpg",
+          "isMain": true,
+          "description": "WissemNeffati"
+        }
+      ]
+    }
+]
