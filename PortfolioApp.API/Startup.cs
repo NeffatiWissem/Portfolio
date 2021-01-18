@@ -65,27 +65,16 @@ namespace PortfolioApp.API
             services.AddScoped<IPortfolioRepository,PortfolioRepository>();
 
             //--> Ajouter Authentification 
-            // services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-            // .AddJwtBearer(Options =>{
-            //     Options.TokenValidationParameters = new TokenValidationParameters{
-            //         ValidateIssuerSigningKey = true,
-            //         IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration.GetSection("AppSettings:Secret").Value)),
-            //         ValidateIssuer = false,
-            //         ValidateAudience = false
-            //     };
-            // });
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-            .AddJwtBearer(options =>
-            {
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII
-                        .GetBytes(Configuration.GetSection("AppSettings:Secret").Value)),
-                    ValidateIssuer = false,
-                    ValidateAudience = false
-                };
-            });
+             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+             .AddJwtBearer(Options =>{
+                 Options.TokenValidationParameters = new TokenValidationParameters{
+                     ValidateIssuerSigningKey = true,
+                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration.GetSection("AppSettings:Secret").Value)),
+                     ValidateIssuer = false,
+                     ValidateAudience = false
+                 };
+             });
+          
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,0 +1,30 @@
+<div class="card mb-4">
+  <div style="text-align: center" class="wrapper">
+    <img class="card-img-top" src="{{project.photoUrl}}" alt="{{project.projectName}}">
+    <ul class="list-inline project-icons animate text-center">
+      <li class="list-inline-item">
+        <button class="btn btn-sm btn-outline-primary" [routerLink]="['/projects/',project.id]">
+          <i class="fa fa-eye"></i>
+        </button>
+      </li>
+      <li *ngIf="token" class="list-inline-item">
+        <button class="btn btn-sm btn-outline-primary">
+          <i class="fa fa-edit"></i>
+        </button>
+      </li>
+      <li *ngIf="token" class="list-inline-item">
+        <button class="btn btn-sm btn-outline-primary">
+          <i class="fa fa-remove"></i>
+        </button>
+      </li>
+    </ul>
+  </div>
+  <div class="card-body p-1">
+    <h6 style="font-weight:bold;font-family:'Leorio';font-size:1.5rem;color: rgb(7, 7, 7)" 
+        class="card-title text-center mb-1"><i class="fa fa-product-hunt"></i>
+      {{project.projectName}}
+    </h6>
+  
+  </div>
+
+</div>

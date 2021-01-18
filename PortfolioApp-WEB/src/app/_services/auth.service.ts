@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { map } from "rxjs/operators"; //--> importer map
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class AuthService {
   decodedToken:any;
 
   //--> définir Url de Web Api
-  baseUrl='http://localhost:5000/auth/';
+  baseUrl=environment.apiUrl+'auth/';
 
   //--> Faire l'injection de service HttpClient avec variable http qui sera utiliser
   constructor(private http:HttpClient) { }

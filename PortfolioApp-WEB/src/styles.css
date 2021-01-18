@@ -1,6 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.min.css";
-@import "~bootswatch/dist/solar/bootstrap.min.css";
+/*Modifier plateforme*/
+@import "~bootswatch/dist/pulse/bootstrap.min.css";
+
 @import "~font-awesome/css/font-awesome.min.css";
 
 /* Inporter les style de alertify  */ 

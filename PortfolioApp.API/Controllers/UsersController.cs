@@ -27,7 +27,7 @@ namespace PortfolioApp.API.Controllers
         public async Task<IActionResult> GetUsers()
         {
             var users = await _repo.GetAllUsers();
-            var usersDto=_mapper.Map<IEnumerable<UserForListDto>>(users);
+            var usersDto=_mapper.Map<IEnumerable<UserForDetailDto>>(users);
             return Ok(usersDto);
         }
 

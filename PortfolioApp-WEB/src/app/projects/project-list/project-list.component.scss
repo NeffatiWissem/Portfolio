@@ -1,0 +1,38 @@
+.site-section p {
+    margin-bottom: 35px;
+}
+
+.site-section p.counter {
+    font-size: 100px;
+    font-weight: 300;
+    color: #fff;
+    margin: 0;
+    line-height: 0.8;
+}
+
+.site-section {
+    padding-top: 120px;
+ }
+
+ .site-section h2,
+.site-section h3 {
+    font-size: 36px;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.section-portfolio {
+    padding-bottom: 120px;
+}
+
+.section-portfolio .col-md-4:nth-last-child(-n+3) .portfolio-item {
+    margin-bottom: 0;
+}
+
+.section-portfolio .btn {
+    margin-top: 10px;
+}
+
+.img-lines {
+    margin: 15px 0 40px;
+}

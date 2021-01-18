@@ -14,6 +14,7 @@ namespace PortfolioApp.API.Helpers
                        opt=>{opt.MapFrom(src=>src.Photos.FirstOrDefault(p=>p.IsMain).Url);})
             .ForMember(dest=>dest.Age,
                        opt=>{opt.ResolveUsing(src=>src.DateOfBirth.CalculateAge());});
+
            //--> On va associée PhotoUrl avec la valeur de source qui contient IsMain=true
             CreateMap<User,UserForDetailDto>()
             .ForMember(dest=>dest.PhotoUrl,
@@ -23,9 +24,11 @@ namespace PortfolioApp.API.Helpers
             
            
            CreateMap<Project,ProjectForListDto>()
-            .ForMember(dest=>dest.PhotoUrl,opt=>{opt.MapFrom(src=>src.Photos.FirstOrDefault(p=>p.IsMain).Url);});
+            .ForMember(dest=>dest.PhotoUrl,
+                       opt=>{opt.MapFrom(src=>src.Photos.FirstOrDefault(p=>p.IsMain).Url);});
            CreateMap<Project,ProjectForDetailDto>()
-            .ForMember(dest=>dest.PhotoUrl,opt=>{opt.MapFrom(src=>src.Photos.FirstOrDefault(p=>p.IsMain).Url);});
+            .ForMember(dest=>dest.PhotoUrl,
+                       opt=>{opt.MapFrom(src=>src.Photos.FirstOrDefault(p=>p.IsMain).Url);});
            
 
            CreateMap<Skill,SkillForDetailDto>(); 
