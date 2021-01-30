@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using PortfolioApp.API.Data;
 using PortfolioApp.API.Dtos;
 using PortfolioApp.API.Models;
+using System;
+using System.Security.Claims;
 
 namespace PortfolioApp.API.Controllers
 {
@@ -22,7 +24,7 @@ namespace PortfolioApp.API.Controllers
             _repo = repo;
         }
 
-        [AllowAnonymous]
+         [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetUsers()
         {
@@ -31,7 +33,7 @@ namespace PortfolioApp.API.Controllers
             return Ok(usersDto);
         }
 
-        [AllowAnonymous]
+         [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUser(int id)
         {
@@ -39,6 +41,25 @@ namespace PortfolioApp.API.Controllers
             //--> Créer UserDto qui sera retourner au application Web
             var userDto=_mapper.Map<UserForDetailDto>(user);
             return Ok(userDto);
+        }
+
+         [AllowAnonymous]
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateUser(int id, UserForUpdateDto userForUpdateDto){
+        //   //--> vérifier que id envoyé est le même id dans le Token
+        //    if(id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+        //    return Unauthorized();
+
+          var userFromRepo = await _repo.GetUser(id);
+
+          _mapper.Map(userForUpdateDto,userFromRepo);
+
+          if(await _repo.SaveAll()){
+              return NoContent();
+          } 
+
+          throw new Exception($"Un problème est survenu lors de la modification des données");
+
         }
 
     }

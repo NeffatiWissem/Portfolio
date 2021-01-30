@@ -9,6 +9,7 @@ namespace PortfolioApp.API.Helpers
     {
         public AutoMapperProfiles()
         {
+            //--> CreateMap<ClassSource, ClassDestination>
            CreateMap<User,UserForListDto>()
             .ForMember(dest=>dest.PhotoUrl,
                        opt=>{opt.MapFrom(src=>src.Photos.FirstOrDefault(p=>p.IsMain).Url);})
@@ -36,6 +37,11 @@ namespace PortfolioApp.API.Helpers
 
            CreateMap<Photo,PhotoForDetailDto>(); 
            CreateMap<PhotoProjects,PhotoProjectsForDetailDto>(); 
+
+           CreateMap<UserForUpdateDto,User>(); 
+           CreateMap<ProjectForUpdateDto,Project>(); 
+
+
         }
     }
 }

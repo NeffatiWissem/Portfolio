@@ -1,0 +1,65 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <h4>My Profil</h4>
+        </div>
+        <div class="col-sm-6">
+            <div *ngIf="editForm.dirty" class="alert alert-danger">
+                <strong>Notice : </strong>
+                The modifications made to the profil file should be saved
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="card">
+                <img class="card-img-top" src="{{user.photoUrl}}" alt="Card image">
+            </div>
+            <div class="card-footer">
+                <div>
+                    <button form="editForm" [disabled]='!editForm.dirty' 
+                    class="btn btn-outline-primary btn-block" type="submit"
+                        style="font-family:LegendryDemoRegular;font-size:1.5rem;">
+                        Save
+                    </button>
+
+                </div>
+            </div>           
+            
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6" style="color: rgb(7, 7, 7);">
+            <form #editForm="ngForm" id="editForm" (ngSubmit)="updateUser()">
+                <div>
+                    <label for="userName">Name </label><br>
+                    <input type="text" name="userName" [(ngModel)]="user.userName">
+                </div>
+                <div>
+                    <label for="userAge">Age </label><br>
+                    <input type="text" name="userAge" [(ngModel)]="user.age">
+                </div>
+                <div>
+                    <label for="usercountry">Country </label><br>
+                    <input type="text" name="usercountry" [(ngModel)]="user.country">
+                </div>
+                <div>
+                    <label for="usercity">Country </label><br>
+                    <input type="text" name="usercity" [(ngModel)]="user.city">
+                </div>
+
+                <div>
+                    <label for="interests">Interests </label><br>
+                    <textarea name="interests" [(ngModel)]="user.interests" rows="6" class="form-control"></textarea>
+                </div>
+                <div>
+                    <label for="lookinFor">Lookin For </label><br>
+                    <textarea name="lookinFor" [(ngModel)]="user.lookinFor" rows="6" class="form-control"></textarea>
+                </div>
+                <div>
+                    <label for="introduction">Introduction </label><br>
+                    <textarea name="introduction" [(ngModel)]="user.introduction" rows="6"
+                        class="form-control"></textarea>
+                </div>
+            </form>
+            <br>
+            <br>
+        </div>
+    </div>
+</div>

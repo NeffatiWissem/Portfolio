@@ -24,12 +24,18 @@ export class ProjectService {
 
  constructor(private http:HttpClient) { }
 
- getProjects():Observable<Project[]>{
-  return this.http.get<Project[]>(this.baseUrl,httpOptions);
-}
+  getProjects():Observable<Project[]>{
+    return this.http.get<Project[]>(this.baseUrl,httpOptions);
+  }
 
-getProject(id:number):Observable<Project>{
-  return this.http.get<Project>(this.baseUrl+id,httpOptions);
-}
+  getProject(id:number):Observable<Project>{
+    return this.http.get<Project>(this.baseUrl+id,httpOptions);
+  }
+
+  //--> UpdateProject
+  updateProject(id:number, project:Project){
+    return this.http.put(this.baseUrl+id,project);
+  }
+
 
 }

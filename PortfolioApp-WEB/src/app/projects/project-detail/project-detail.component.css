@@ -1,15 +1,48 @@
 .img-thumbnail{
-  margin: 25px;  
+  margin: 25px;
   width: 85%;
-  height: 85%;
+  height: 300px;    
 }
-
 .card-body{
-    padding: 0 25px;
+  padding: 0 25px;
 }
 
 .card-footer{
-    padding: 10px 15px;
-    background-color: #fff;
-    border-top: none;
+  padding: 10px 15px;
+  background-color: #fff;
+  border-top: none;
+}
+
+   .btn-success:hover{
+      text-decoration: none;
+      color: black !important;
+      background:rgb(252, 210, 25) !important;
+      letter-spacing:0.5px;
+      
+    }
+    .btn-success{
+      text-decoration: none;
+      letter-spacing:0.5px;
+      font-weight:bold;
+      font-size:1rem
+        }
+
+p{
+  letter-spacing:0.5px;
+  font-size:1.0rem
+}
+strong,span{
+  letter-spacing:0.5px;
+  font-size:1.1rem;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+h4,textarea,label,input{
+  letter-spacing:0.5px;
+  margin-top: -2px;
+  margin-bottom: 10px;
+}
+h1{
+  letter-spacing:0.5px;
+  font-size:2.5em;
 }

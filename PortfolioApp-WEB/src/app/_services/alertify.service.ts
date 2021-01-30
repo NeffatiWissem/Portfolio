@@ -8,13 +8,19 @@ export class AlertifyService {
 constructor() { }
 
 //--> Méthode pour afficher Message de confirmation boite de dialogue  
-confirm(message: string, okCallback: () => any) {
-  alertify.confirm(message, function(e:any) {
-      if (e) {
-          okCallback();
-      } else {
-
-      }
+// confirm(message: string, okCallback: () => any, cancelCallback: () => any) {
+//   alertify.confirm(message, 
+//     function(e:any) {
+//         if (e) { okCallback(); } else { }
+//     },
+//     function (e:any) {
+//           if (e) { cancelCallback() } else { }         
+//     }
+//   );
+// }
+confirm(message: string, okCallback: () => any):any {
+  alertify.confirm(message, function (e:any) {
+    if (e) { okCallback() } else { }
   });
 }
 
@@ -38,10 +44,9 @@ message(message:string){
   alertify.message(message);
 }
 
-}
 
 //--> Paramèter par défaut:
-alertify.defaults = {
+defaults = {
   // dialogs defaults
   autoReset:true,
   basic:false,
@@ -93,7 +98,7 @@ alertify.defaults = {
   // language resources 
   glossary:{
       // dialogs default title
-      title:'AlertifyJS',
+      title:'Protfolio Wissem',
       // ok button text
       ok: 'OK',
       // cancel button text
@@ -110,4 +115,31 @@ alertify.defaults = {
       cancel:'ajs-cancel'
   }
 };
+
+promisifyConfirm(title: string, message: string, options = {}): Promise<ConfirmResult> {
+
+  return new Promise<ConfirmResult>((resolve) => {
+    alertify.confirm(
+      title,
+      message,
+      () => resolve(ConfirmResult.Ok),
+      () => resolve(ConfirmResult.Cancel)).set(Object.assign({}, {
+        closableByDimmer: false,
+        defaultFocus: 'cancel',
+        frameless: false,
+        closable: false
+      }, options));
+  });
+}
+
+
+}
+
+//////////////////////////
+
+export enum ConfirmResult {
+  Ok = 1,
+  Cancel
+}
+
 

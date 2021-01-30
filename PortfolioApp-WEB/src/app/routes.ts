@@ -12,6 +12,11 @@ import { ProjectDetailResolver } from "./_resolvers/project-detail.resolver";
 import { ProjectListResolver } from "./_resolvers/project-list.resolver";
 import { UserListResolver } from "./_resolvers/user-list.resolver";
 import { SkillListResolver } from "./_resolvers/skill-list.resolver";
+import { ProjectEditComponent } from "./projects/project-edit/project-edit.component";
+import { UserEditComponent } from "./user/user-edit/user-edit.component";
+import { ProjectEditResolver } from "./_resolvers/project-edit.resolver";
+import { UserEditResolver } from "./_resolvers/user-edit.resolver";
+import { PreventUnsavedChangesGuard } from "./_guards/prevent-unsaved-changes.guard";
 
 export const appRoutes: Routes=[
     //--> s'il ne tappe rien dans url il sera vers HomeComponent
@@ -22,11 +27,15 @@ export const appRoutes: Routes=[
              canActivate:[AuthGuard],
             children:[
                 //--> s'il écrit "projects" il orienté vers ProjectsComponent
-                
-               
-               
+                             
                 {path:'lists',component:ListsComponent},
-                {path:'messages',component:MessagesComponent}                
+                {path:'messages',component:MessagesComponent},
+                {path:'project/edit/:id',component:ProjectEditComponent,
+                resolve:{project:ProjectEditResolver},
+                canDeactivate:[PreventUnsavedChangesGuard]},
+
+                {path:'user/edit',component:UserEditComponent,
+                resolve:{user:UserEditResolver}},                 
             ]
         },
     {path:'users',component:UserComponent,resolve:{users:UserListResolver}},

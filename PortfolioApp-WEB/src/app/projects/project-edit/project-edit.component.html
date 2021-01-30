@@ -1,0 +1,118 @@
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-sm-4">
+            <h4>Project</h4>
+        </div>
+        <div class="col-sm-8">
+            <div *ngIf="editForm.dirty" class="alert alert-danger">
+                <strong>Notice : </strong>
+                The modifications made to the project file should be saved
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card">
+                <img class="card-img-top img-thumbnail" src="{{project.photoUrl}}" alt="{{project.projectName}}">
+                <div class="card-body">
+                    <div>
+                        <strong>Name of project :</strong>
+                        <p>{{project.projectName}}</p>
+                    </div>
+                    <div>
+                        <strong>Name of company :</strong>
+                        <p>{{project.companyName}}</p>
+                    </div>
+                    <div>
+                        <strong>City :</strong>
+                        <p>{{project.city}}</p>
+                    </div>
+                    <div>
+                        <strong>Country :</strong>
+                        <p>{{project.country}}</p>
+                    </div>
+                    <div>
+                        <strong>Introduction :</strong>
+                        <p>{{project.mission}}</p>
+                    </div>
+                    <div>
+                        <strong>Environment :</strong>
+                        <p>{{project.environment}}</p>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div>
+                        <button form="editForm" [disabled]='!editForm.dirty' 
+                        class="btn btn-outline-primary btn-block"  type="submit" 
+                        style="font-family:LegendryDemoRegular;font-size:1.5rem;">
+                        Save
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="tab-Panel">
+                <tabset class="project-tabset">
+                    <tab heading="Infos Project">
+                        <form #editForm="ngForm" id="editForm" (ngSubmit)="updateProject()">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4>Divers infos</h4>
+                                </div>
+                                <div class="card-text mt-3 p-2">
+                                    <div>
+                                        <label for="projectName">Project name </label><br>
+                                        <input type="text" name="projectName" [(ngModel)]="project.projectName">
+                                    </div>
+                                    <div>
+                                        <label for="companyName">Name of company </label><br>
+                                        <input type="text" name="companyName" [(ngModel)]="project.companyName">
+                                    </div>
+                                    <div>
+                                        <label for="country">Country </label><br>
+                                        <input type="text" name="country" [(ngModel)]="project.country">
+                                    </div>
+                                    <div>
+                                        <label for="city">City </label><br>
+                                        <input type="text" name="city" [(ngModel)]="project.city">
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4>Introduction</h4>
+                                </div>
+                                <div class="card-text mt-3 p-2">
+                                    <textarea name="introduction" [(ngModel)]="project.mission" rows="6"
+                                        class="form-control"></textarea>
+                                </div>
+                            </div>
+                            <br>
+
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4>Environment</h4>
+                                </div>
+                                <div class="card-text mt-3 p-2">
+                                    <textarea name="environment" [(ngModel)]="project.environment" rows="6"
+                                        class="form-control"></textarea>
+                                </div>
+                            </div>
+                            <br>
+
+                        </form>
+
+                    </tab>
+
+                    <tab heading="Photos Project">
+                        <h4>Photos of project</h4>
+                        <!-- <ngx-gallery [options]="galleryOptions" [images]="galleryImages" class="img-thumbnail"></ngx-gallery> -->
+                    </tab>
+
+                </tabset>
+            </div>
+        </div>
+    </div>
+</div>

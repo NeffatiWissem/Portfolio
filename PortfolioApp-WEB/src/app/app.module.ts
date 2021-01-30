@@ -32,6 +32,11 @@ import { ProjectDetailResolver } from './_resolvers/project-detail.resolver';
 import { ProjectListResolver } from './_resolvers/project-list.resolver';
 import { UserListResolver } from './_resolvers/user-list.resolver';
 import { SkillListResolver } from './_resolvers/skill-list.resolver';
+import { ProjectEditComponent } from './projects/project-edit/project-edit.component';
+import { UserEditComponent } from './user/user-edit/user-edit.component';
+import { UserEditResolver } from './_resolvers/user-edit.resolver';
+import { ProjectEditResolver } from './_resolvers/project-edit.resolver';
+import { PreventUnsavedChangesGuard } from './_guards/prevent-unsaved-changes.guard';
 
 
 
@@ -53,7 +58,9 @@ export function tokenGetter() {
     UserComponent,
     ProjectComponent,
     SkillComponent,
-    ProjectDetailComponent
+    ProjectDetailComponent,
+    ProjectEditComponent,
+    UserEditComponent
    ],
   imports: [
     BrowserModule,
@@ -77,11 +84,14 @@ export function tokenGetter() {
     ErrorInterceptorProvidor,
     AlertifyService,
     AuthGuard,
+    PreventUnsavedChangesGuard,
     UserService,
     ProjectDetailResolver,
     ProjectListResolver,
     UserListResolver,
-    SkillListResolver
+    SkillListResolver,
+    UserEditResolver,
+    ProjectEditResolver
   ],
   bootstrap: [AppComponent]
 })

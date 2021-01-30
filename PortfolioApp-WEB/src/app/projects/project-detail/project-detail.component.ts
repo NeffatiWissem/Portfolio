@@ -30,8 +30,8 @@ export class ProjectDetailComponent implements OnInit {
 
     //--> Paraméter Gallerie image
     this.galleryOptions=[{
-      width:'500px',
-      height:'500px',
+      width:'600px',
+      height:'600px',
       imagePercent:100,
       thumbnailsColumns:4,
       imageAnimation:NgxGalleryAnimation.Slide,
