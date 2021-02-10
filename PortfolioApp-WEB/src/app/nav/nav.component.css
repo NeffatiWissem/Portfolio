@@ -29,3 +29,16 @@
   font-family: 'LegendryDemoRegular';
 }
 
+input{
+  font-size: 17px;
+  font-weight: bold;
+  padding: 5px;
+  
+}
+
+img{
+  max-height: 70px;
+  border: 2px solid rgb(252, 210, 25);
+  display: inline;
+  border-radius: 50px;
+}

@@ -23,7 +23,7 @@ export class ProjectDetailComponent implements OnInit {
               private route:ActivatedRoute) { }
 
   ngOnInit() {
-    // this.loadUser();
+   
     this.route.data.subscribe(data=> {
       this.project=data['project']
     });

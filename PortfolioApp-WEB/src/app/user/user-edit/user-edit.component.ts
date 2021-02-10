@@ -17,6 +17,7 @@ export class UserEditComponent implements OnInit {
   @ViewChild("editForm") editForm?: NgForm;
 
   user: User={id:0,age:41,city:'SOUSSE',country:'Tunisie',gender:'',knownAs:'Wissem',photoUrl:'',userName:'NEFFATI Wissem'};
+  photoUrl:string="";
   
   constructor(private route:ActivatedRoute, 
               private alertify:AlertifyService,
@@ -26,7 +27,9 @@ export class UserEditComponent implements OnInit {
   ngOnInit(): void {
     this.route.data.subscribe(data =>{
       this.user = data['user'];
-    })
+    });
+    this.authService.currentPhotoUrl.subscribe(
+      photoUrl=>this.photoUrl=photoUrl );
   }
 
   updateUser(){

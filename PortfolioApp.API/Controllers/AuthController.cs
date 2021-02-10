@@ -9,6 +9,7 @@ using Microsoft.IdentityModel.Tokens;
 using PortfolioApp.API.Data;
 using PortfolioApp.API.Dtos;
 using PortfolioApp.API.Models;
+using AutoMapper;
 
 namespace PortfolioApp.API.Controllers
 {
@@ -18,9 +19,11 @@ namespace PortfolioApp.API.Controllers
     {
         private readonly IAuthRepository _repo;
         private readonly IConfiguration _config;
+        private readonly IMapper _mapper;
 
-        public AuthController(IAuthRepository repo, IConfiguration config)
+        public AuthController(IAuthRepository repo, IConfiguration config,IMapper mapper)
         {
+            _mapper = mapper;
             _config = config;
             _repo = repo;
 
@@ -78,8 +81,11 @@ namespace PortfolioApp.API.Controllers
             //--> 6- Créer TOKEN pour User
             var token = tokenHandler.CreateToken(tokenDescriptor);
 
+            var user = _mapper.Map<UserForListDto>(userFromRepo);
+
             return Ok(new{
-                token = tokenHandler.WriteToken(token)
+                token = tokenHandler.WriteToken(token),
+                user
             });
         }
     }

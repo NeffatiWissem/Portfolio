@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { map } from "rxjs/operators"; //--> importer map
 import { environment } from 'src/environments/environment';
+import { User } from '../_models/user';
+import {BehaviorSubject} from 'rxjs'
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +19,20 @@ export class AuthService {
   //--> définir Url de Web Api
   baseUrl=environment.apiUrl+'auth/';
 
+  currentUser:User ={id:1,userName:'',
+  knownAs:'',
+  age:41,
+  gender:'Male',
+  photoUrl:'',
+  city:'Sousse',
+  country:'tunisie'}
+  photoUrl = new BehaviorSubject<string>('../../assets/img/photo.jpg');
+  currentPhotoUrl= this.photoUrl.asObservable();
+
   //--> Faire l'injection de service HttpClient avec variable http qui sera utiliser
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) { 
+  
+  }
 
   //--> Définir la méthode login pour faire la lision avec méthode login web Api
   login(model:any)
@@ -30,8 +44,10 @@ export class AuthService {
         if(user)
         {
           localStorage.setItem('token',user.token);
+          localStorage.setItem('user',JSON.stringify(user.user));
           this.decodedToken= this.jwtHelper.decodeToken(user.token);
-          console.log(this.decodedToken);
+          this.currentUser=user.user;
+          this.changeUserPhoto(this.currentUser.photoUrl);
         }
       })
     )
@@ -54,6 +70,10 @@ export class AuthService {
       return false;
     }
     
+  }
+
+  changeUserPhoto(newPhotoUrl:string){
+    this.photoUrl.next(newPhotoUrl);
   }
 
 }

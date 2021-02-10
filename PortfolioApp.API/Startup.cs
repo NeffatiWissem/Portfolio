@@ -51,6 +51,9 @@ namespace PortfolioApp.API
             //--> Permet d'utliser le policie pour géréer l'accée à notre service web
             services.AddCors();
 
+            //--> Configurer CloudinarySettings
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
+
             //--> Ajouter serverice AutoMapper
             services.AddAutoMapper();
 
@@ -63,6 +66,9 @@ namespace PortfolioApp.API
 
              //--> Ajouter "IPortfolioRepository" et "PortfolioRepository" dans fichier "strtup.cs"
             services.AddScoped<IPortfolioRepository,PortfolioRepository>();
+
+            services.AddScoped<IProjectRepository,ProjectRepository>();
+
 
             //--> Ajouter Authentification 
              services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

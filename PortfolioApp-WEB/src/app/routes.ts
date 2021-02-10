@@ -17,6 +17,7 @@ import { UserEditComponent } from "./user/user-edit/user-edit.component";
 import { ProjectEditResolver } from "./_resolvers/project-edit.resolver";
 import { UserEditResolver } from "./_resolvers/user-edit.resolver";
 import { PreventUnsavedChangesGuard } from "./_guards/prevent-unsaved-changes.guard";
+import { ProjectAddComponent } from "./projects/project-add/project-add.component";
 
 export const appRoutes: Routes=[
     //--> s'il ne tappe rien dans url il sera vers HomeComponent
@@ -34,10 +35,15 @@ export const appRoutes: Routes=[
                 resolve:{project:ProjectEditResolver},
                 canDeactivate:[PreventUnsavedChangesGuard]},
 
-                {path:'user/edit',component:UserEditComponent,
+               
+
+                {path:'user/edit/:id',component:UserEditComponent,
                 resolve:{user:UserEditResolver}},                 
             ]
         },
+
+        {path:'project/AddProject',component:ProjectAddComponent},
+        
     {path:'users',component:UserComponent,resolve:{users:UserListResolver}},
     
     {path:'projects/:id',component:ProjectDetailComponent, resolve:{project:ProjectDetailResolver}},

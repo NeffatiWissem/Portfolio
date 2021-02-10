@@ -5,8 +5,8 @@
         </div>
         <div class="col-sm-8">
             <div *ngIf="editForm.dirty" class="alert alert-danger">
-                <strong>Notice : </strong>
-                The modifications made to the project file should be saved
+                <strong>Remarque : </strong>
+                Les modifications apportées au fichier de profil doivent être enregistrées
             </div>
         </div>
         <div class="col-sm-4">
@@ -107,10 +107,9 @@
                     </tab>
 
                     <tab heading="Photos Project">
-                        <h4>Photos of project</h4>
+                        <app-photo-editor (getProjectPhotoChange)="updateMainPhoto($event)" [photos]="project.photos"></app-photo-editor>
                         <!-- <ngx-gallery [options]="galleryOptions" [images]="galleryImages" class="img-thumbnail"></ngx-gallery> -->
                     </tab>
-
                 </tabset>
             </div>
         </div>

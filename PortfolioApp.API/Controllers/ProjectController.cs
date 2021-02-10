@@ -8,6 +8,7 @@ using System.Security.Claims;
 
 using PortfolioApp.API.Data;
 using PortfolioApp.API.Dtos;
+using PortfolioApp.API.Models;
 
 namespace PortfolioApp.API.Controllers
 {
@@ -16,9 +17,9 @@ namespace PortfolioApp.API.Controllers
     [Route("[controller]")]
     public class ProjectController : ControllerBase
     {
-        private readonly IPortfolioRepository _repo;
+        private readonly IProjectRepository _repo;
         private readonly IMapper _mapper;
-        public ProjectController(IPortfolioRepository repo, IMapper mapper)
+        public ProjectController(IProjectRepository repo, IMapper mapper)
         {
             _mapper = mapper;
             _repo = repo;
@@ -59,6 +60,21 @@ namespace PortfolioApp.API.Controllers
 
           throw new Exception($"Un problème est survenu lors de la modification des données");
 
+        }
+
+        [AllowAnonymous]
+        [HttpPost("AddProject")]
+        public async Task<IActionResult> AddProject(ProjectForCreateDto projectForCreateDto)
+        {
+              projectForCreateDto.ProjectName = projectForCreateDto.ProjectName.ToLower();
+            if (await _repo.ProjectExists(projectForCreateDto.ProjectName))
+            {
+                return BadRequest("Ce project exist déjà");
+            }
+            
+            var ProjectToReturn =_mapper.Map<Project>(projectForCreateDto);
+            var projectToCreate = await _repo.AddProject(ProjectToReturn);
+            return StatusCode(201);
         }
     }
 }

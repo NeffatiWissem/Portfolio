@@ -44,4 +44,8 @@ export class ProjectEditComponent implements OnInit {
     error=>this.alertify.error(error)
   )
   }
+
+  updateMainPhoto(photoUrl:string){
+   this.project.photoUrl=photoUrl;
+  }
 }

@@ -9,7 +9,8 @@ namespace PortfolioApp.API.Models
         public DateTime DateAdded { get; set; }
         //-->Si photo principal
         public bool IsMain { get; set; }
-        
+         //--> Ajouter Id pour photo dans Cloudinary
+        public string PublicId { get; set; }        
         //--> Faire la laision avec Project
         public Project Project { get; set; }
         public int ProjectId { get; set; }

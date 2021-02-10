@@ -1,18 +1,14 @@
 using System;
-namespace PortfolioApp.API.Models
+namespace PortfolioApp.API.Dtos
 {
-    public class Photo
+    public class PhotoProjectForReturnDto
     {
         public int Id { get; set; }
         public string Url { get; set; }
         public string Description { get; set; }
         public DateTime DateAdded { get; set; }
-        //-->Si photo principal
         public bool IsMain { get; set; }
-        //--> Ajouter Id pour photo dans Cloudinary
         public string PublicId { get; set; }
-        //--> Faire la laison avec User
-        public User User { get; set; }
-        public int UserId { get; set; }
+
     }
 }

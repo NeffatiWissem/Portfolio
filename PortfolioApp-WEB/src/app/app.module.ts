@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { JwtModule } from '@auth0/angular-jwt';
 import { NgxGalleryModule } from 'ngx-gallery-9';
+import { FileUploadModule } from 'ng2-file-upload';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -37,6 +38,10 @@ import { UserEditComponent } from './user/user-edit/user-edit.component';
 import { UserEditResolver } from './_resolvers/user-edit.resolver';
 import { ProjectEditResolver } from './_resolvers/project-edit.resolver';
 import { PreventUnsavedChangesGuard } from './_guards/prevent-unsaved-changes.guard';
+import { PhotoEditorComponent } from './projects/photo-editor/photo-editor.component';
+import { PhotoUserEditoComponent } from './user/photo-user-edito/photo-user-edito.component';
+import { ProjectAddComponent } from './projects/project-add/project-add.component';
+
 
 
 
@@ -60,13 +65,17 @@ export function tokenGetter() {
     SkillComponent,
     ProjectDetailComponent,
     ProjectEditComponent,
-    UserEditComponent
+    UserEditComponent,
+    PhotoEditorComponent,
+    PhotoUserEditoComponent,
+    ProjectAddComponent
    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    FileUploadModule,
     NgxGalleryModule,
     BsDropdownModule.forRoot(),
     RouterModule.forRoot(appRoutes),

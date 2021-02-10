@@ -41,6 +41,15 @@ namespace PortfolioApp.API.Helpers
            CreateMap<UserForUpdateDto,User>(); 
            CreateMap<ProjectForUpdateDto,Project>(); 
 
+           CreateMap<Photo,PhotoForReturnDto>(); 
+           CreateMap<PhotoForCreateDto,Photo>(); 
+
+           CreateMap<PhotoProjects,PhotoProjectForReturnDto>(); 
+           CreateMap<PhotoProjectForCreateDto,PhotoProjects>(); 
+
+           CreateMap<ProjectForCreateDto,Project>(); 
+
+
 
         }
     }

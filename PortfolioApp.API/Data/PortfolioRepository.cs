@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
+using System.Linq;
 using System.Collections.Generic;
 using PortfolioApp.API.Models;
 
@@ -50,6 +51,30 @@ namespace PortfolioApp.API.Data
 
         public async Task<IEnumerable<Skill>> GetAllSkills(){
             return await _context.Skills.ToListAsync();
+        }
+
+        public async Task<Photo> GetMainPhotoForUser(int userId)
+        {
+           return await _context.Photos.Where(u=>u.UserId==userId).FirstOrDefaultAsync(p=>p.IsMain);
+           
+        }
+
+        public async Task<Photo> GetPhoto(int id)
+        {
+            var photo = await _context.Photos.FirstOrDefaultAsync(p=>p.Id==id);
+            return photo;
+        }
+
+         public async Task<PhotoProjects> GetMainPhotoForProject(int projectId)
+        {
+           return await _context.PhotosProjects.Where(p=>p.ProjectId==projectId).FirstOrDefaultAsync(p=>p.IsMain);
+           
+        }
+
+        public async Task<PhotoProjects> GetPhotoProject(int id)
+        {
+            var photo = await _context.PhotosProjects.FirstOrDefaultAsync(p=>p.Id==id);
+            return photo;
         }
 
         public async Task<bool> SaveAll(){

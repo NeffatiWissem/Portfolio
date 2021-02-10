@@ -37,5 +37,15 @@ export class ProjectService {
     return this.http.put(this.baseUrl+id,project);
   }
 
+  setMainPhoto(projectId:number, id:number){
+    return this.http.post(this.baseUrl+projectId+'/photos/'+id+'/setMain',{});
+  }
 
+  addProject(project:Project){
+    return this.http.post(this.baseUrl+'AddProject',project);
+  }
+
+  deletePhoto(projectId:number , id:number){
+    return this.http.delete(this.baseUrl+projectId +'/photos/'+id);
+  }
 }

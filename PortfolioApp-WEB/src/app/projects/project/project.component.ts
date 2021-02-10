@@ -2,6 +2,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 import { Project } from 'src/app/_models/project';
+import { AuthService } from 'src/app/_services/auth.service';
 import { ProjectListComponent } from '../project-list/project-list.component';
 
 @Component({
@@ -15,10 +16,12 @@ export class ProjectComponent implements OnInit {
 
    token:boolean = localStorage.getItem('token')?true:false;
    
-   constructor() { }
+   constructor(public authService:AuthService) { }
 
-   ngOnInit(): void {
-    
+   ngOnInit(){    
   }
 
+  loggedIn(){
+    return this.authService.loggedIn();
+   }
 }
