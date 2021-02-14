@@ -1,15 +1,3 @@
-<!-- <h1 style="font-family:'AmericanCaptain';color: rgb(5, 5, 5)">List Des Skills</h1>
-<div class="container">
-  <div class="row">
-    <div *ngFor="let skill of skills" class="col-lg-2 col-md-3 col-sm-6">
-      <app-skill [skill]='skill'></app-skill>
-      <br>
-      <br>
-      <br>
-    </div>
-  </div>
-</div> -->
-
 <section class="site-section section-skills">
   <div class="container">
       <div class="text-center">
@@ -20,10 +8,15 @@
         <div *ngFor="let skill of skills" class="col-lg-4 col-md-4 col-sm-4">
           <app-skill [skill]='skill'></app-skill>
           <br>
+         
           <br>
           <br>
-        </div>         
+        </div>  
+        <div *ngIf="loggedIn()" class="text-center">
+          <button (click)="registerToggle()" style="font-family:'JF FLAT'" 
+          class="btn btn-outline-primary btn-lg">Ajouter Skill</button>
+        </div>       
          
       </div>
   </div>
-</section><!-- /.secton-skills -->
+</section>

@@ -56,7 +56,7 @@
       </div>
 
       <span *ngIf="loggedIn()">
-        <img src="{{photoUrl}}" alt="">
+        <img src="{{photoUrl || 'assets/img/photo.jpg'}}" alt="">
       </span>
 
       <form *ngIf="!loggedIn()"

@@ -9,6 +9,9 @@
 @import "~alertifyjs/build/css/alertify.min.css";
 @import "~alertifyjs/build/css/themes/bootstrap.min.css";
 
+/* Importer la liste des styles pour DatePicker */
+@import "~ngx-bootstrap/datepicker/bs-datepicker.css";
+
 /* Importer myStyle.css */
 @import url("assets/myStyles.css");
 

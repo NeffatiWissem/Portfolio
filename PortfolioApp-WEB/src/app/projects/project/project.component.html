@@ -1,6 +1,6 @@
 <div class="card mb-4">
   <div style="text-align: center" class="wrapper">
-    <img class="card-img-top" src="{{project.photoUrl}}" alt="{{project.projectName}}">
+    <img class="card-img-top" src="{{project.photoUrl || 'assets/img/projetDefaut.jpg'}}" alt="{{project.projectName}}">
     <ul class="list-inline project-icons animate text-center">
       <li class="list-inline-item">
         <button class="btn btn-sm btn-outline-primary" [routerLink]="['/projects/',project.id]">

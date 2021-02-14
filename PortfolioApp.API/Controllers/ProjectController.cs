@@ -35,7 +35,7 @@ namespace PortfolioApp.API.Controllers
         }
 
         [AllowAnonymous]
-        [HttpGet("{id}")]
+        [HttpGet("{id}",Name="GetProject")]
         public async Task<IActionResult> GetProject(int id)
         {
             var project = await _repo.GetProject(id);
@@ -74,7 +74,7 @@ namespace PortfolioApp.API.Controllers
             
             var ProjectToReturn =_mapper.Map<Project>(projectForCreateDto);
             var projectToCreate = await _repo.AddProject(ProjectToReturn);
-            return StatusCode(201);
+            return CreatedAtRoute("GetProject",new{id=projectToCreate.Id},projectToCreate);
         }
     }
 }

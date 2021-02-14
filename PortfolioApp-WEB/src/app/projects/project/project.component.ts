@@ -3,6 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 
 import { Project } from 'src/app/_models/project';
 import { AuthService } from 'src/app/_services/auth.service';
+import { ProjectService } from 'src/app/_services/project.service';
 import { ProjectListComponent } from '../project-list/project-list.component';
 
 @Component({
@@ -14,11 +15,10 @@ export class ProjectComponent implements OnInit {
 
    @Input() project: Project ={id:0,projectName:'',photoUrl:''};
 
-   token:boolean = localStorage.getItem('token')?true:false;
-   
-   constructor(public authService:AuthService) { }
+    constructor(public authService:AuthService) { }
 
    ngOnInit(){    
+    
   }
 
   loggedIn(){

@@ -71,6 +71,9 @@ export class PhotoEditorComponent implements OnInit {
           description:''         
         };
         this.photos?.push(photo);
+        if(photo.isMain){
+          this.getProjectPhotoChange.emit(photo.url); 
+        }
       }
     }
 

@@ -1,36 +1,86 @@
-<form #registerForm="ngForm" (ngSubmit)="register()"  >
+<form (ngSubmit)="register()" [formGroup]="registerForm">
+  <div class="form-group">
     <h4 style="font-family:'LegendryDemoRegular';font-size:2rem;color: rgb(253, 253, 251)" class="text-center">
       Ajouter un nouveau projet</h4>
-    <hr>
-  
-    <div class="form-group">
-      <input name="projectName" [(ngModel)]="model.projectName" type="text" class="form-control" placeholder="Nom de projet">
-    </div>
+  </div>
+  <hr>
+  <div class="form-group">
+    <input formControlName="projectName" type="text"
+      [ngClass]="{'is-invalid':registerForm.get('projectName')?.errors && registerForm.get('projectName')?.touched}"
+      class="form-control" placeholder="Nom de projet">
 
-    <div class="form-group">
-        <input name="companyName" [(ngModel)]="model.companyName" type="text" class="form-control" placeholder="Nom de company">
-    </div>
+    <div *ngIf="registerForm.get('projectName')?.hasError('required') && registerForm.get('projectName')?.touched "
+      class="invalid-feedback">Ajouter nom de projet</div>
 
-    <div class="form-group">
-        <input name="mission" [(ngModel)]="model.mission" type="text" class="form-control" placeholder="Mission">
-    </div>
+    <div *ngIf="registerForm.get('projectName')?.hasError('minlength') && registerForm.get('projectName')?.touched "
+      class="invalid-feedback">Le mot de projet doit comporter au moins quatre caractères</div>
 
-    <div class="form-group">
-        <input name="environment" [(ngModel)]="model.environment" type="text" class="form-control" placeholder="environment">
-    </div>
+  </div>
 
-    <div class="form-group">
-        <input name="city" [(ngModel)]="model.city" type="text" class="form-control" placeholder="Ville">
-    </div>
+  <div class="form-group">
+    <input formControlName="companyName" type="text"
+      [ngClass]="{'is-invalid':registerForm.get('companyName')?.errors && registerForm.get('companyName')?.touched}"
+      class="form-control" placeholder="Nom de company">
+    <div *ngIf="registerForm.get('companyName')?.hasError('required') && registerForm.get('companyName')?.touched "
+      class="invalid-feedback">Ajouter nom de company</div>
+    <div *ngIf="registerForm.get('companyName')?.hasError('minlength') && registerForm.get('companyName')?.touched "
+      class="invalid-feedback">Le mot de company doit comporter au moins quatre caractères</div>
 
-    <div class="form-group">
-        <input name="country" [(ngModel)]="model.country" type="text" class="form-control" placeholder="Pays">
+  </div>
+
+  <div class="form-group">
+    <input formControlName="mission" type="text"
+      [ngClass]="{'is-invalid':registerForm.get('mission')?.errors && registerForm.get('mission')?.touched}"
+      class="form-control" placeholder="Mission">
+    <div *ngIf="registerForm.get('mission')?.hasError('required') && registerForm.get('mission')?.touched "
+      class="invalid-feedback">Ajouter Mission</div>
+    <div *ngIf="registerForm.get('mission')?.hasError('minlength') && registerForm.get('mission')?.touched "
+      class="invalid-feedback">La mission doit comporter au moins quatre caractères</div>
+
+  </div>
+
+  <div class="form-group">
+
+    <input formControlName="environment" type="text"
+      [ngClass]="{'is-invalid':registerForm.get('environment')?.errors && registerForm.get('environment')?.touched}"
+      class="form-control" placeholder="environment">
+    <div *ngIf="registerForm.get('environment')?.hasError('required') && registerForm.get('environment')?.touched "
+      class="invalid-feedback">Ajouter Environnement</div>
+    <div *ngIf="registerForm.get('environment')?.hasError('minlength') && registerForm.get('environment')?.touched "
+      class="invalid-feedback">Environement doit comporter au moins quatre caractères</div>
+  </div>
+
+  <div class="form-group">
+    <input formControlName="city" type="text" class="form-control" placeholder="Ville"
+      [ngClass]="{'is-invalid':registerForm.get('city')?.errors && registerForm.get('city')?.touched}">
+    <div *ngIf="registerForm.get('city')?.hasError('required') && registerForm.get('city')?.touched "
+      class="invalid-feedback">Ajouter Ville</div>
+    <div *ngIf="registerForm.get('city')?.hasError('minlength') && registerForm.get('city')?.touched "
+      class="invalid-feedback">La ville doit comporter au moins quatre caractères</div>
+  </div>
+
+  <div class="form-group">
+    <input formControlName="country" type="text" class="form-control" placeholder="Pays"
+      [ngClass]="{'is-invalid':registerForm.get('country')?.errors && registerForm.get('country')?.touched}">
+    <div *ngIf="registerForm.get('country')?.hasError('required') && registerForm.get('country')?.touched"
+      class="invalid-feedback">Ajouter Pays</div>
+    <div *ngIf="registerForm.get('country')?.hasError('minlength') && registerForm.get('country')?.touched "
+      class="invalid-feedback">Pays doit comporter au moins quatre caractères</div>
+  </div>
+
+  <div class="form-group">
+    <input [ngClass]="{'is-invalid': registerForm.get('dateOn')?.errors && registerForm.get('dateOn')?.touched}"
+      class="form-control" placeholder="Date" formControlName="dateOn" type="text" bsDatepicker [bsConfig]="bsConfig">
+    <div class="invalid-feedback"
+      *ngIf="registerForm.get('dateOn')?.touched && registerForm.get('dateOn')?.hasError('required')">
+      Ajouter Date project
     </div>
-  
-    
-  
-    <div class="form-group text-center">
-      <button  style="font-family:'LegendryDemoRegular';" class="btn btn-outline-primary btn-lg" type="submit">Ajouter</button>
-      <button (click)="cancel()" style="font-family:'LegendryDemoRegular';" class="btn btn-outline-primary btn-lg ml-2" type="button">Annuler</button>
-    </div>
-  </form> 
+  </div>
+
+  <div class="form-group text-center">
+    <button [disabled]="!registerForm.valid" style="font-family:'LegendryDemoRegular';"
+      class="btn btn-outline-primary btn-lg" type="submit">Ajouter</button>
+    <button (click)="cancel()" style="font-family:'LegendryDemoRegular';" class="btn btn-outline-primary btn-lg ml-2"
+      type="button">Annuler</button>
+  </div>
+</form>

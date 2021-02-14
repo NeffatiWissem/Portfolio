@@ -49,8 +49,6 @@ namespace PortfolioApp.API.Helpers
 
            CreateMap<ProjectForCreateDto,Project>(); 
 
-
-
         }
     }
 }
