@@ -5,23 +5,27 @@
         <img class="card-img-top img-thumbnail" src="{{project.photoUrl || 'assets/img/projetDefaut.jpg'}}" alt="{{project.projectName}}">
         <div class="card-body">
           <div>
-            <strong>Name of project :</strong>
+            <strong>Nom de projet :</strong>
             <p>{{project.projectName}}</p>
           </div>
           <div>
-            <strong>Name of company :</strong>
+            <strong>Nom de société :</strong>
             <p>{{project.companyName}}</p>
           </div>
           <div>
-            <strong>City :</strong>
+            <strong>Date de création :</strong>
+            <p>{{created}}</p>
+          </div>
+          <div>
+            <strong>Ville :</strong>
             <p>{{project.city}}</p>
           </div>
           <div>
-            <strong>Country :</strong>
+            <strong>Pays :</strong>
             <p>{{project.country}}</p>
           </div>
           <div>
-            <strong>Environment :</strong>
+            <strong>Environement :</strong>
             <p>{{project.environment}}</p>
           </div>
         </div>
@@ -42,7 +46,7 @@
                 <h4>Introduction</h4>
               </div>
               <div class="card-text mt-3 p-2">
-                <p>{{project.mission}}</p>
+                <p #mission>{{project.mission | slice:0:200}}</p>
               </div>
             </div>
           </tab>

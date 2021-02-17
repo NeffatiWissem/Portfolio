@@ -14,19 +14,23 @@
                 <img class="card-img-top img-thumbnail" src="{{project.photoUrl || 'assets/img/projetDefaut.jpg'}}" alt="{{project.projectName}}">
                 <div class="card-body">
                     <div>
-                        <strong>Name of project :</strong>
+                        <strong>Projet :</strong>
                         <p>{{project.projectName}}</p>
                     </div>
                     <div>
-                        <strong>Name of company :</strong>
+                        <strong>Société :</strong>
                         <p>{{project.companyName}}</p>
                     </div>
                     <div>
-                        <strong>City :</strong>
+                        <strong>Date :</strong>
+                        <p>{{created}}</p>
+                    </div>
+                    <div>
+                        <strong>Ville :</strong>
                         <p>{{project.city}}</p>
                     </div>
                     <div>
-                        <strong>Country :</strong>
+                        <strong>Pays :</strong>
                         <p>{{project.country}}</p>
                     </div>
                     <div>
@@ -34,7 +38,7 @@
                         <p>{{project.mission}}</p>
                     </div>
                     <div>
-                        <strong>Environment :</strong>
+                        <strong>Environement :</strong>
                         <p>{{project.environment}}</p>
                     </div>
                 </div>
@@ -43,7 +47,7 @@
                         <button form="editForm" [disabled]='!editForm.dirty' 
                         class="btn btn-outline-primary btn-block"  type="submit" 
                         style="font-family:LegendryDemoRegular;font-size:1.5rem;">
-                        Save
+                        Enregister
                         </button>
 
                     </div>
@@ -61,19 +65,23 @@
                                 </div>
                                 <div class="card-text mt-3 p-2">
                                     <div>
-                                        <label for="projectName">Project name </label><br>
+                                        <label for="projectName">Projet </label><br>
                                         <input type="text" name="projectName" [(ngModel)]="project.projectName">
                                     </div>
                                     <div>
-                                        <label for="companyName">Name of company </label><br>
+                                        <label for="companyName">Société </label><br>
                                         <input type="text" name="companyName" [(ngModel)]="project.companyName">
                                     </div>
+                                    <!-- <div>
+                                        <label for="dateOf">Date </label><br>
+                                        <input name="dateOf" [(ngModel)]="project.dateOf" type="text" >
+                                    </div>  -->
                                     <div>
-                                        <label for="country">Country </label><br>
+                                        <label for="country">Pays </label><br>
                                         <input type="text" name="country" [(ngModel)]="project.country">
                                     </div>
                                     <div>
-                                        <label for="city">City </label><br>
+                                        <label for="city">Ville </label><br>
                                         <input type="text" name="city" [(ngModel)]="project.city">
                                     </div>
                                 </div>
@@ -85,7 +93,7 @@
                                     <h4>Introduction</h4>
                                 </div>
                                 <div class="card-text mt-3 p-2">
-                                    <textarea name="introduction" [(ngModel)]="project.mission" rows="6"
+                                    <textarea name="mission" [(ngModel)]="project.mission" rows="6"
                                         class="form-control"></textarea>
                                 </div>
                             </div>
@@ -93,7 +101,7 @@
 
                             <div class="card">
                                 <div class="card-header">
-                                    <h4>Environment</h4>
+                                    <h4>Environement</h4>
                                 </div>
                                 <div class="card-text mt-3 p-2">
                                     <textarea name="environment" [(ngModel)]="project.environment" rows="6"

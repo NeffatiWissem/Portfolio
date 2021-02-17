@@ -3,3 +3,10 @@
     border: solid;
     border-color: black;
 }
+
+.btn-outline-primary:hover {
+    text-decoration: none;
+    color: black !important;
+    background: rgb(252, 210, 25) !important;
+    
+      }

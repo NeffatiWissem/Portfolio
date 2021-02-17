@@ -1,38 +1,42 @@
 <div class="container">
   <div *ngFor="let user of users" class="row">
-    <div class="col-lg-6 col-md-6 col-sm-6" >
-      <img class="card-img-top" src="{{user.photoUrl}}" alt="Card image" >
+    <div class="col-lg-6 col-md-6 col-sm-6">
+      <img class="card-img-top" src="{{user.photoUrl}}" alt="Card image">
     </div>
-    <div class="col-lg-6 col-md-6 col-sm-6" style="color: rgb(7, 7, 7);" >
+    <div class="col-lg-6 col-md-6 col-sm-6" style="color: rgb(7, 7, 7);">
       <div>
-        <strong>Name  :</strong>
+        <strong>Nom :</strong>
         <p>{{user?.userName}}</p>
       </div>
       <div>
-        <strong>Age  :</strong>
+        <strong>Age :</strong>
         <p>{{user?.age}}</p>
       </div>
       <div>
-        <strong>City  :</strong>
+        <strong>Ville :</strong>
         <p>{{user?.city}}</p>
       </div>
       <div>
-        <strong>Country  :</strong>
+        <strong>Pays :</strong>
         <p>{{user?.country}}</p>
       </div>
       <div>
-        <strong>Interests  :</strong>
+        <strong>Intérêts:</strong>
         <p>{{user?.interests}}</p>
       </div>
       <div>
-        <strong>Lookin For  :</strong>
+        <strong>Cherche :</strong>
         <p>{{user?.lookinFor}}</p>
       </div>
       <div>
-        <strong>Introduction  :</strong>
-        <p>{{user?.introduction}}</p>
+        <strong>Introduction :</strong>
+        <p #intro>{{user.introduction | slice:0:200}}</p> <!-- Afficher 200 caractères -->
       </div>
-    
+      <button [hidden]='!showIntro' class="btn btn-outline-primary"
+        (click)="intro.innerText = user.introduction || ''; showIntro=false;">Plus</button>
+      <button [hidden]='showIntro' class="btn btn-outline-danger"
+        (click)="intro.innerText = user.introduction?.slice(0,200) || ''; showIntro=true;">Moins</button>
+
     </div>
   </div>
 </div>

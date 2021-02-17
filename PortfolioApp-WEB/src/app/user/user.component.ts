@@ -12,12 +12,14 @@ import { UserService } from '../_services/user.service';
 export class UserComponent implements OnInit {
  users: User[] = [];
  user: User ={id:1,userName:'',
-  knownAs:'',
-  age:41,
-  gender:'Male',
-  photoUrl:'',
-  city:'Sousse',
-  country:'tunisie'}
+              knownAs:'',
+              age:41,
+              gender:'Male',
+              photoUrl:'',
+              city:'Sousse',
+              country:'tunisie'};
+
+  showIntro:boolean=true;
 
   constructor(private userService:UserService, 
               private route:ActivatedRoute,
@@ -28,6 +30,8 @@ export class UserComponent implements OnInit {
     this.route.data.subscribe(data=> {
       this.users=data['users']
     });
+
+    this.showIntro=true;
   }
 
   // loadUsers(){

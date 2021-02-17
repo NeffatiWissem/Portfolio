@@ -18,6 +18,10 @@ export class ProjectDetailComponent implements OnInit {
  galleryOptions: NgxGalleryOptions[]=[];
  galleryImages: NgxGalleryImage[]=[];
 
+ //--> Format de date de création de projet
+ options={weekday:'long', year:'numeric', month:'long', day:'numeric'};
+ created: string="";
+
   constructor(private projectService: ProjectService, 
               private alertify:AlertifyService, 
               private route:ActivatedRoute) { }
@@ -39,6 +43,8 @@ export class ProjectDetailComponent implements OnInit {
     }]
 
     this.galleryImages=this.getImages();
+    //--> Modifier format date de création
+    this.created=new Date(this.project.dateOn??new Date()).toLocaleString('fr-fr',this.options);    
    }
 
   ////--> Ajouter la liste des photos d'un projet dans la Gallerie

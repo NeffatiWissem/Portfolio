@@ -1,3 +1,4 @@
+using System;
 namespace PortfolioApp.API.Dtos
 {
     public class ProjectForUpdateDto
@@ -8,5 +9,6 @@ namespace PortfolioApp.API.Dtos
         public string Environment {get;set;}
         public string City { get; set; }
         public string Country { get; set; }
+        public DateTime DateOn { get; set; }
     }
 }
